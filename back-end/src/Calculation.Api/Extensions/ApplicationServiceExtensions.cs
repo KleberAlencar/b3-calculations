@@ -22,7 +22,7 @@ namespace Calculation.Api.Extensions
                 });
             });
 
-            services.AddMediatR(typeof(SearchTaxDiscountsRequestHandler));
+            services.AddMediatR(typeof(GetCalculationRequestHandler));
 
             return services;
         }

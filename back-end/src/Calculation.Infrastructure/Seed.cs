@@ -13,7 +13,7 @@ namespace Calculation.Infrastructure
             discounts.Add(new TaxDiscount(1, 6, 22.5));
             discounts.Add(new TaxDiscount(7, 12, 20));
             discounts.Add(new TaxDiscount(13, 24, 17.5));
-            discounts.Add(new TaxDiscount(24, 9999, 15));
+            discounts.Add(new TaxDiscount(25, 9999, 15));
 
             await context.TaxDiscount.AddRangeAsync(discounts);
             await context.SaveChangesAsync();

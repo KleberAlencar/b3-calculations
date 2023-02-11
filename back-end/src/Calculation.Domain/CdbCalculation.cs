@@ -2,32 +2,65 @@ namespace Calculation.Domain
 {
     public class CdbCalculation
     {
+        #region [ Attributes ]
+
         private IList<MonthlyCalculation> _monthlyCalculations;
 
-        public CdbCalculation(double investiment, double grossValue, double netValue)
+        #endregion
+
+        #region [ Constructor ]
+
+        public CdbCalculation(double investiment, double grossIncome, double netIncome, double taxDiscountValue)
         {
             Investiment = investiment;
-            GrossValue = grossValue;
-            NetValue = netValue;
+            GrossIncome = grossIncome;
+            NetIncome = netIncome;
+            TaxDiscountValue = taxDiscountValue;
             _monthlyCalculations = new List<MonthlyCalculation>();
         }
 
+        #endregion
+
+        #region [ Properties ]
+
         public double Investiment { get; private set; }
 
-        public double GrossValue { get; private set; }
+        public double GrossIncome { get; private set; }
 
-        public double NetValue { get; private set; }
+        public double NetIncome { get; private set; }
+
+        public double TaxDiscountValue { get; private set; }
+
+        public double TotalGrossInvestmentValue => Investiment + GrossIncome;
+
+        public double TotalNetInvestmentValue => Investiment + NetIncome;
 
         public IReadOnlyCollection<MonthlyCalculation> MonthlyCalculations { get { return _monthlyCalculations.ToArray(); } }
+
+        #endregion
+
+        #region [ Public Methods ]
 
         public void AddMonthyCalculation(MonthlyCalculation monthlyCalculation)
         {
             _monthlyCalculations.Add(monthlyCalculation);
         }
 
-        public void UpdateGrossValue(double grossValue)
+        public void UpdateGrossIncome(double grossValue)
         {
-            GrossValue = grossValue;
+            GrossIncome = grossValue;
         }
+
+        public void UpdateNetIncome(double netValue)
+        {
+            NetIncome = netValue;
+        }
+
+        public void UpdateTaxDiscountValue(double taxDiscountValue)
+        {
+            TaxDiscountValue = taxDiscountValue;
+        }
+
+        #endregion
     }
 }

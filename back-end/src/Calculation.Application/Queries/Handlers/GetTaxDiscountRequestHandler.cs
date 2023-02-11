@@ -1,6 +1,8 @@
 using MediatR;
+using System.Linq;
 using Calculation.Domain;
 using Calculation.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Calculation.Application.Queries.Requests;
 
 namespace Calculation.Application.Queries.Handlers
@@ -16,7 +18,7 @@ namespace Calculation.Application.Queries.Handlers
 
         public async Task<TaxDiscount> Handle(GetTaxDiscountRequest request, CancellationToken cancellationToken)
         {
-            return await _context.TaxDiscount.FindAsync(request.Id);
+            return await _context.TaxDiscount.FirstOrDefaultAsync(x => x.StartingMonth <= request.Month && x.EndingMonth >= request.Month);
         }
     }
 }

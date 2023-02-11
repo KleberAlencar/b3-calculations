@@ -11,6 +11,7 @@ namespace Calculation.Application.Queries.Requests
         public double Investiment { get; set; }
 
         [Required]
+        [Display(Name="Months Quantity")]
         [Range(2, 1200, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int MonthsQuantity { get; set; }
     }

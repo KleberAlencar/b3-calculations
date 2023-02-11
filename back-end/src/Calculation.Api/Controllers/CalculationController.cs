@@ -16,17 +16,17 @@ namespace Calculation.Api.Controllers
         }
 
         [HttpGet]
-        [Route("tax-discounts")]
-        public async Task<ActionResult<List<TaxDiscount>>> Search()
+        [Route("tax-discounts/ranges")]
+        public async Task<ActionResult<TaxDiscount>> GetTaxDiscount([FromQuery] GetTaxDiscountRequest request)
         {
-            return await Mediator.Send(new SearchTaxDiscountsRequest());
+            return await Mediator.Send(new GetTaxDiscountRequest { Month = request.Month });
         }
 
         [HttpGet]
-        [Route("tax-discounts/{id}")]
-        public async Task<ActionResult<TaxDiscount>> Get(int id)
+        [Route("tax-discounts")]
+        public async Task<ActionResult<List<TaxDiscount>>> SearchTaxDiscounts()
         {
-            return await Mediator.Send(new GetTaxDiscountRequest{Id = id});
+            return await Mediator.Send(new SearchTaxDiscountsRequest());
         }
     }
 }
