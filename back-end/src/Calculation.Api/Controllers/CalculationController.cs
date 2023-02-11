@@ -9,6 +9,13 @@ namespace Calculation.Api.Controllers
     public class CalculationController : BaseApiController
     {
         [HttpGet]
+        [Route("cdb")]
+        public async Task<ActionResult<CdbCalculation>> GetCdbCalculation([FromQuery]GetCalculationRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [HttpGet]
         [Route("tax-discounts")]
         public async Task<ActionResult<List<TaxDiscount>>> Search()
         {

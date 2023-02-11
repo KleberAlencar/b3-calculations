@@ -2,17 +2,17 @@ namespace Calculation.Domain
 {
     public class MonthlyCalculation
     {
-        public MonthlyCalculation(int month, double referenceValue, double calculatedGrossValue)
+        public MonthlyCalculation(int month, double inicialValue, double finalValue)
         {
             Month = month;
-            ReferenceValue = referenceValue;
-            CalculatedGrossValue = calculatedGrossValue;
+            InitialValue = inicialValue;
+            FinalValue = finalValue;
         }
 
         public int Month { get; private set; }
 
-        public double ReferenceValue { get; private set; }
+        public double InitialValue { get; private set; }
 
-        public double CalculatedGrossValue { get; private set; }
+        public double FinalValue { get; private set; }
     }
 }

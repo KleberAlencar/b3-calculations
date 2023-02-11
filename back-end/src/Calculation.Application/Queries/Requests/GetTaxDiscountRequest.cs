@@ -7,7 +7,7 @@ namespace Calculation.Application.Queries.Requests
     public class GetTaxDiscountRequest : IRequest<TaxDiscount>
     {
         [Required]
-        [Range(1, Int16.MaxValue)]
+        [Range(1, 1200, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Id { get; set; }
     }
 }
