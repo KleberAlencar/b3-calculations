@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Calculation.Application.Queries.Entities
+namespace Calculation.Application.Queries.Requests
 {
-    public class SearchCdbCalculation
+    public class SearchCalculationRequest
     {
         [Required]
         [Range(2, Int32.MaxValue)]

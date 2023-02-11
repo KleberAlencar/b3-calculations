@@ -2,9 +2,9 @@ using MediatR;
 using Calculation.Domain;
 using System.ComponentModel.DataAnnotations;
 
-namespace Calculation.Application.Queries.Entities
+namespace Calculation.Application.Queries.Requests
 {
-    public class GetTaxDiscount : IRequest<TaxDiscount>
+    public class GetTaxDiscountRequest : IRequest<TaxDiscount>
     {
         [Required]
         [Range(1, Int16.MaxValue)]
