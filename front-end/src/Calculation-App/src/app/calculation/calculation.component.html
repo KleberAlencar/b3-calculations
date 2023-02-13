@@ -52,12 +52,36 @@
         <th scope="col">Rendimento Bruto</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="cdbCalculation.monthlyCalculations && cdbCalculation.monthlyCalculations.length">
       <tr *ngFor="let item of cdbCalculation.monthlyCalculations">
         <th scope="row">{{ item.month }}</th>
         <td>{{ item.initialValue }}</td>
         <td>{{ item.finalValue }}</td>
         <td>{{ item.grossIncome }}</td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!cdbCalculation.monthlyCalculations.length">
+      <tr>
+        <td colspan="12" class="text-center">Nenhum registro encontrado</td>
+      </tr>
+    </tfoot>
+  </table>
+  <br/>
+  <h3>Tabela de Imposto</h3>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Mês Inicial</th>
+        <th scope="col">Mês Final</th>
+        <th scope="col">Percentual</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="taxDiscounts && taxDiscounts.length">
+      <tr *ngFor="let item of taxDiscounts">
+        <td>{{ item.startingMonth }}</td>
+        <td>{{ item.endingMonth }}</td>
+        <td>{{ item.percentage }}</td>
       </tr>
     </tbody>
   </table>
