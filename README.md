@@ -8,8 +8,8 @@ Para organizar o código, a aplicação foi dividida em duas partes, back-end e 
 
 Este código foi escrito para atender as demandas do desafio e poderá ser realizado refactoring caso surja necessidade. 
 
-# 1. back-end
-Api desenvolvido em .Net 7 utilizando de forma simplificada padrão CQRS, design pattern Mediator, Data Annotations, Sqlite database, EF Core, etc.
+# back-end
+Api desenvolvido em .Net 7 utilizando de forma simplificada padrão CQRS, design pattern Mediator, conceitos Clean Architecture, Data Annotations, Sqlite database, EF Core, etc.
 
 A execução do back-end deverá ser realizada da seguinte forma:
 
@@ -22,7 +22,7 @@ A execução do back-end deverá ser realizada da seguinte forma:
 - Executar o comando < dotnet watch run > (passo anterior pode ser substituído por este)
 - Aplicação deverá abrir via swagger no link `http://localhost:5000/swagger/index.html`
 
-# 2. front-end
+# front-end
 Com o back-end em execução o front-end poderá ser inicializado da seguinte forma:
 
 - Abrir o código no Visual Studio Code
