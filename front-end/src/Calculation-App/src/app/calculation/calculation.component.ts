@@ -16,7 +16,6 @@ export class CalculationComponent implements OnInit {
     this.getCdbCalculation();
   }
 
-  // teste
   public getCdbCalculation(): void {
     this.http.get('http://localhost:5000/api/calculations/cdb?Investiment=1000&MonthsQuantity=6').subscribe(
       response => this.cdbCalculation = response,
