@@ -2,12 +2,13 @@ using MediatR;
 using System.Linq;
 using Calculation.Domain;
 using Calculation.Infrastructure;
+using Calculation.Application.Core;
 using Microsoft.EntityFrameworkCore;
 using Calculation.Application.Queries.Requests;
 
 namespace Calculation.Application.Queries.Handlers
 {
-    public class GetTaxDiscountRequestHandler : IRequestHandler<GetTaxDiscountRequest, TaxDiscount>
+    public class GetTaxDiscountRequestHandler : IRequestHandler<GetTaxDiscountRequest, Result<TaxDiscount>>
     {
         private readonly DataContext _context;
 
@@ -16,9 +17,10 @@ namespace Calculation.Application.Queries.Handlers
             _context = context;
         }
 
-        public async Task<TaxDiscount> Handle(GetTaxDiscountRequest request, CancellationToken cancellationToken)
+        public async Task<Result<TaxDiscount>> Handle(GetTaxDiscountRequest request, CancellationToken cancellationToken)
         {
-            return await _context.TaxDiscount.FirstOrDefaultAsync(x => x.StartingMonth <= request.Month && x.EndingMonth >= request.Month);
+            var taxDiscount = await _context.TaxDiscount.FirstOrDefaultAsync(x => x.StartingMonth <= request.Month && x.EndingMonth >= request.Month);
+            return Result<TaxDiscount>.Success(taxDiscount);
         }
     }
 }

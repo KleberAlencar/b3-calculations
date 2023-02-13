@@ -1,12 +1,13 @@
 using MediatR;
 using Calculation.Domain;
 using Calculation.Infrastructure;
+using Calculation.Application.Core;
 using Microsoft.EntityFrameworkCore;
 using Calculation.Application.Queries.Requests;
 
 namespace Calculation.Application.Queries.Handlers
 {
-    public class GetCalculationRequestHandler : IRequestHandler<GetCalculationRequest, CdbCalculation>
+    public class GetCalculationRequestHandler : IRequestHandler<GetCalculationRequest, Result<CdbCalculation>>
     {
         private readonly DataContext _context;
 
@@ -15,7 +16,7 @@ namespace Calculation.Application.Queries.Handlers
             _context = context;
         }
 
-        public async Task<CdbCalculation> Handle(GetCalculationRequest request, CancellationToken cancellationToken)
+        public async Task<Result<CdbCalculation>> Handle(GetCalculationRequest request, CancellationToken cancellationToken)
         {           
             var initialValue = request.Investiment;
             var finalValue = 0.00;
@@ -33,15 +34,15 @@ namespace Calculation.Application.Queries.Handlers
                                                                                   x.EndingMonth >= request.MonthsQuantity);
             if (taxDiscount != null)
             {
-                var taxDiscountValue = Math.Round((finalValue - request.Investiment) * (taxDiscount.Percentage / 100), 2);
-                var netValue = Math.Round((finalValue - request.Investiment) - taxDiscountValue, 2);
+                var taxDiscountValue = (finalValue - request.Investiment) * (taxDiscount.Percentage / 100);
+                var netIncome = (finalValue - request.Investiment) - taxDiscountValue;
 
-                cdbCalculation.UpdateNetIncome(netValue);
-                cdbCalculation.UpdateGrossIncome(Math.Round(finalValue - request.Investiment, 2));
+                cdbCalculation.UpdateNetIncome(netIncome);
+                cdbCalculation.UpdateGrossIncome(finalValue - request.Investiment);
                 cdbCalculation.UpdateTaxDiscountValue(taxDiscountValue);
             }
 
-            return cdbCalculation;
+            return Result<CdbCalculation>.Success(cdbCalculation);
         }
     }
 }

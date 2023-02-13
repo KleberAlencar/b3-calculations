@@ -1,0 +1,20 @@
+<h1>Tabela Impostos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Mês Inicial</th>
+      <th scope="col">Mês Final</th>
+      <th scope="col">Desconto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let discount of taxDiscounts">
+      <th scope="row">{{discount.id}}</th>
+      <td>{{discount.startingMonth}}</td>
+      <td>{{discount.endingMonth}}</td>
+      <td>{{discount.percentage}}%</td>
+    </tr>
+  </tbody>
+</table>

@@ -48,17 +48,17 @@ namespace Calculation.Domain
 
         public void UpdateGrossIncome(double grossValue)
         {
-            GrossIncome = grossValue;
+            GrossIncome = Math.Round(grossValue, 2);
         }
 
         public void UpdateNetIncome(double netValue)
         {
-            NetIncome = netValue;
+            NetIncome = Math.Round(netValue, 2);
         }
 
         public void UpdateTaxDiscountValue(double taxDiscountValue)
         {
-            TaxDiscountValue = taxDiscountValue;
+            TaxDiscountValue = Math.Round(taxDiscountValue, 2);
         }
 
         #endregion

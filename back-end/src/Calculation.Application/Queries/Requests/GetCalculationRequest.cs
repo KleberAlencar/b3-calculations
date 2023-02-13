@@ -1,10 +1,11 @@
 using MediatR;
 using Calculation.Domain;
+using Calculation.Application.Core;
 using System.ComponentModel.DataAnnotations;
 
 namespace Calculation.Application.Queries.Requests
 {
-    public class GetCalculationRequest : IRequest<CdbCalculation>
+    public class GetCalculationRequest : IRequest<Result<CdbCalculation>>
     {
         [Required]
         [Range(0, Double.PositiveInfinity, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
