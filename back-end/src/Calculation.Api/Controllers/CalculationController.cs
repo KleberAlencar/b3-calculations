@@ -1,8 +1,6 @@
-using Calculation.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Calculation.Api.Controllers.Base;
 using Calculation.Application.Queries.Requests;
-using MediatR;
 
 namespace Calculation.Api.Controllers
 {

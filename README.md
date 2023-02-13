@@ -22,6 +22,8 @@ A execução do back-end deverá ser realizada da seguinte forma:
 - Executar o comando < dotnet watch run > (passo anterior pode ser substituído por este)
 - Aplicação deverá abrir via swagger no link `http://localhost:5000/swagger/index.html`
 
+Com intuito de padronizar as chamadas, os métodos que começam com Get (ex.: GetCdbCalculation) retornam uma única entidade, já os que começam com Search (ex.: SearchTaxDiscounts) retornam uma lista de entidades.
+
 # front-end
 Com o back-end em execução o front-end poderá ser inicializado da seguinte forma:
 
