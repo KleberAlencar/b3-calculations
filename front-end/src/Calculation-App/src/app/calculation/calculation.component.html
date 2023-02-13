@@ -2,6 +2,24 @@
   <br/>
   <h1>Cálculo do Investimento</h1>
   <br/>
+
+  <form>
+    <div class="row">
+      <div class="col-sm">
+        <input type="text" class="form-control" placeholder="Investimento">
+      </div>
+      <div class="col-sm">
+        <input type="number" class="form-control" placeholder="Meses">
+      </div>
+      <div class="col-sm">
+        <button class="btn btn-outline-success">Calcular</button>
+      </div>
+    </div>
+  </form>
+  <br/>
+  <br/>
+  <h3>Retorno</h3>
+  <hr>
   <table class="table">
     <thead>
       <th scope="col">Investimento</th>
@@ -31,6 +49,7 @@
         <th scope="col">Mês</th>
         <th scope="col">Valor Inicial</th>
         <th scope="col">Valor Final Bruto</th>
+        <th scope="col">Rendimento Bruto</th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +57,7 @@
         <th scope="row">{{ item.month }}</th>
         <td>{{ item.initialValue }}</td>
         <td>{{ item.finalValue }}</td>
+        <td>{{ item.grossIncome }}</td>
       </tr>
     </tbody>
   </table>
