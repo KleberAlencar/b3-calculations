@@ -8,18 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculationComponent implements OnInit {
 
-  public taxDiscounts: any;
+  public cdbCalculation: any;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.getTaxDiscounts();
+    this.getCdbCalculation();
   }
 
   // teste
-  public getTaxDiscounts(): void {
-    this.http.get('http://localhost:5000/api/calculations/tax-discounts').subscribe(
-      response => this.taxDiscounts = response,
+  public getCdbCalculation(): void {
+    this.http.get('http://localhost:5000/api/calculations/cdb?Investiment=1000&MonthsQuantity=6').subscribe(
+      response => this.cdbCalculation = response,
       error => console.log(error)
     );
   }
