@@ -50,12 +50,12 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{ cdbCalculation.investiment }}</td>
-          <td>{{ cdbCalculation.grossIncome }}</td>
-          <td>{{ cdbCalculation.netIncome }}</td>
-          <td>{{ cdbCalculation.taxDiscountValue }}</td>
-          <td>{{ cdbCalculation.totalGrossInvestmentValue }}</td>
-          <td>{{ cdbCalculation.totalNetInvestmentValue }}</td>
+          <td>{{ cdbCalculation.investiment | currency }}</td>
+          <td>{{ cdbCalculation.grossIncome | currency }}</td>
+          <td>{{ cdbCalculation.netIncome | currency }}</td>
+          <td>{{ cdbCalculation.taxDiscountValue | currency }}</td>
+          <td>{{ cdbCalculation.totalGrossInvestmentValue | currency }}</td>
+          <td>{{ cdbCalculation.totalNetInvestmentValue | currency }}</td>
         </tr>
       </tbody>
     </table>
@@ -79,9 +79,9 @@
       >
         <tr *ngFor="let item of cdbCalculation.monthlyCalculations">
           <th scope="row">{{ item.month }}</th>
-          <td>{{ item.initialValue }}</td>
-          <td>{{ item.finalValue }}</td>
-          <td>{{ item.grossIncome }}</td>
+          <td>{{ item.initialValue | currency }}</td>
+          <td>{{ item.finalValue | currency }}</td>
+          <td>{{ item.grossIncome | currency }}</td>
         </tr>
       </tbody>
     </table>

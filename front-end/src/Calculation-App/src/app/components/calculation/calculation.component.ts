@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { CdbCalculation } from '../../models/CdbCalculation';
 import { TaxDiscount } from '../../models/TaxDiscount';
 import { CalculationService } from '../../services/calculation.service';
-
 
 @Component({
   selector: 'app-calculation',
@@ -28,7 +26,6 @@ export class CalculationComponent implements OnInit {
 
   public ngOnInit(): void {
     this.spinner.show();
-    this.getCdbCalculation();
     this.searchTaxDiscounts();
   }
 
