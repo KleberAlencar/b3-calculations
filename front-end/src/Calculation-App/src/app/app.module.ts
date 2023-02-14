@@ -9,7 +9,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalculationComponent } from './calculation/calculation.component';
+import { CalculationComponent } from './components/calculation/calculation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalculationService } from './services/calculation.service';
 
