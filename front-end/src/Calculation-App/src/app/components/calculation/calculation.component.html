@@ -100,7 +100,7 @@
         <tr *ngFor="let item of taxDiscounts">
           <td>{{ item.startingMonth }}</td>
           <td>{{ item.endingMonth }}</td>
-          <td>{{ item.percentage }}</td>
+          <td>{{ item.percentage | number: '1.2-2' }}</td>
         </tr>
       </tbody>
     </table>
