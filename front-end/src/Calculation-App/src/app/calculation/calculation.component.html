@@ -1,25 +1,28 @@
 <div class="container">
-  <br/>
+  <br />
   <h1>Cálculo do Investimento</h1>
-  <br/>
+  <br />
 
+  <form method="post" (ngSubmit)="getCdbCalculation()">
+
+  </form>
   <form>
     <div class="row">
       <div class="col-sm">
-        <input type="text" class="form-control" placeholder="Investimento">
+        <input type="number" class="form-control" placeholder="Investimento" required [formControl]="investiment" />
       </div>
       <div class="col-sm">
-        <input type="number" class="form-control" placeholder="Meses">
+        <input type="number" class="form-control" placeholder="Meses" required [formControl]="months" />
       </div>
       <div class="col-sm">
-        <button class="btn btn-outline-success">Calcular</button>
+        <button type="button" (click)="getCdbCalculation()" class="btn btn-outline-success">Calcular</button>
       </div>
     </div>
   </form>
-  <br/>
-  <br/>
+  <br />
+  <br />
   <h3>Retorno</h3>
-  <hr>
+  <hr />
   <table class="table">
     <thead>
       <th scope="col">Investimento</th>
@@ -31,18 +34,18 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{cdbCalculation.investiment}}</td>
-        <td>{{cdbCalculation.grossIncome}}</td>
-        <td>{{cdbCalculation.netIncome}}</td>
-        <td>{{cdbCalculation.taxDiscountValue}}</td>
-        <td>{{cdbCalculation.totalGrossInvestmentValue}}</td>
-        <td>{{cdbCalculation.totalNetInvestmentValue}}</td>
+        <td>{{ cdbCalculation.investiment }}</td>
+        <td>{{ cdbCalculation.grossIncome }}</td>
+        <td>{{ cdbCalculation.netIncome }}</td>
+        <td>{{ cdbCalculation.taxDiscountValue }}</td>
+        <td>{{ cdbCalculation.totalGrossInvestmentValue }}</td>
+        <td>{{ cdbCalculation.totalNetInvestmentValue }}</td>
       </tr>
     </tbody>
   </table>
-  <br/>
+  <br />
   <h3>Evolução</h3>
-  <hr>
+  <hr />
   <table class="table table-striped">
     <thead>
       <tr>
@@ -52,7 +55,12 @@
         <th scope="col">Rendimento Bruto</th>
       </tr>
     </thead>
-    <tbody *ngIf="cdbCalculation.monthlyCalculations && cdbCalculation.monthlyCalculations.length">
+    <tbody
+      *ngIf="
+        cdbCalculation.monthlyCalculations &&
+        cdbCalculation.monthlyCalculations.length
+      "
+    >
       <tr *ngFor="let item of cdbCalculation.monthlyCalculations">
         <th scope="row">{{ item.month }}</th>
         <td>{{ item.initialValue }}</td>
@@ -60,15 +68,10 @@
         <td>{{ item.grossIncome }}</td>
       </tr>
     </tbody>
-    <tfoot *ngIf="!cdbCalculation.monthlyCalculations.length">
-      <tr>
-        <td colspan="12" class="text-center">Nenhum registro encontrado</td>
-      </tr>
-    </tfoot>
   </table>
-  <br/>
+  <br />
   <h3>Tabela de Imposto</h3>
-  <hr>
+  <hr />
   <table class="table table-striped">
     <thead>
       <tr>

@@ -1,5 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { CdbCalculation } from '../models/CdbCalculation';
+import { TaxDiscount } from '../models/TaxDiscount';
+import { CalculationService } from '../services/calculation.service';
+
 
 @Component({
   selector: 'app-calculation',
@@ -8,27 +14,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculationComponent implements OnInit {
 
-  public cdbCalculation: any = [];
-  public taxDiscounts: any = [];
+  investiment = new FormControl();
+  months = new FormControl();
 
-  constructor(private http: HttpClient) {}
+  public cdbCalculation: any;
+  public taxDiscounts: TaxDiscount[] = [];
 
-  ngOnInit(): void {
+  constructor(
+    private calculationService: CalculationService,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
+  ) {}
+
+  public ngOnInit(): void {
+    this.spinner.show();
     this.getCdbCalculation();
     this.searchTaxDiscounts();
   }
 
   public getCdbCalculation(): void {
-    this.http.get('http://localhost:5000/api/calculations/cdb?Investiment=1000&MonthsQuantity=10').subscribe(
+    this.calculationService.getCdbCalcuation(this.investiment.value, this.months.value).subscribe(
       response => this.cdbCalculation = response,
       error => console.log(error)
     );
   }
 
   public searchTaxDiscounts(): void {
-    this.http.get('http://localhost:5000/api/calculations/tax-discounts').subscribe(
-      response => this.taxDiscounts = response,
-      error => console.log(error)
-    );
+    this.calculationService.searchTaxDiscounts().subscribe({
+      next: (_taxDiscounts: TaxDiscount[]) => {
+        this.taxDiscounts = _taxDiscounts;
+      },
+      error: (error: any) => {
+        this.spinner.hide();
+        this.toastr.error('Erro ao carregar lista de impostos', 'Error')
+      },
+      complete: () => this.spinner.hide()
+    });
   }
 }
