@@ -1,6 +1,8 @@
 # Calculation-App
 Desafio do cálculo do CDB
 
+![Screenshot_UI](https://user-images.githubusercontent.com/34080267/218915443-bfe89618-ae88-4bce-8958-2bcf269d8eed.png)
+
 # Considerações
 A aplicação foi desenvolvida em inglês, tentando representar cada item de forma direta e pode ser necessário alguma alteração.
 
