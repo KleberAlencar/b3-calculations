@@ -11,6 +11,9 @@ Para organizar o código, a aplicação foi dividida em duas partes, back-end e 
 Este código foi escrito para atender as demandas do desafio e poderá ser realizado refactoring caso surja necessidade. 
 
 # back-end
+
+![Screenshot_Api](https://user-images.githubusercontent.com/34080267/218915716-6950f798-4706-4015-8a9c-5c23d3a19fff.png)
+
 Api desenvolvido em .Net 7 utilizando de forma simplificada padrão CQRS, design pattern Mediator, conceitos Clean Architecture, Data Annotations, Sqlite database, EF Core, etc.
 
 A execução do back-end deverá ser realizada da seguinte forma:
