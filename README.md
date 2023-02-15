@@ -1,6 +1,8 @@
 # Calculation-App
 Desafio do cálculo do CDB
 
+![]front-end/src/Calculation-App/src/assets/Screenshot_UI.png
+
 # Considerações
 A aplicação foi desenvolvida em inglês, tentando representar cada item de forma direta e pode ser necessário alguma alteração.
 
@@ -24,6 +26,9 @@ A execução do back-end deverá ser realizada da seguinte forma:
 
 Com intuito de padronizar as chamadas, os métodos que começam com Get (ex.: GetCdbCalculation) retornam uma única entidade, já os que começam com Search (ex.: SearchTaxDiscounts) retornam uma lista de entidades.
 
+Os testes deverão ser realizados dentro da pasta back-end/src/Calculation.Tests.
+- Executar testes utilizando o comando < dotnet test >
+
 # front-end
 Com o back-end em execução o front-end poderá ser inicializado da seguinte forma:
 
@@ -32,3 +37,9 @@ Com o back-end em execução o front-end poderá ser inicializado da seguinte fo
 - Digitar cd front-end/src
 - Executar comando < npm start >
 - Caso aplicação não inicie, navegar até o link `http://localhost:4200/`
+
+Os testes deverão ser realizados dentro da pasta front-end/src/Calculation-App.
+- Executar testes utilizando o comando < npm test >
+- Para validar cobertura utilizar comando < ng test --code-coverage >
+
+Atenção: Apenas para agilidade, foram realizados testes somente na pasta "services", outras pastas podem ser testadas no futuro.
