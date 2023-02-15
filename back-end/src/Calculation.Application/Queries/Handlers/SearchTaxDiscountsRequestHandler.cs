@@ -9,9 +9,9 @@ namespace Calculation.Application.Queries.Handlers
 {
     public class SearchTaxDiscountsRequestHandler : IRequestHandler<SearchTaxDiscountsRequest, Result<List<TaxDiscount>>>
     {
-        private readonly DataContext _context;
+        private readonly IDataContext _context;
 
-        public SearchTaxDiscountsRequestHandler(DataContext context)
+        public SearchTaxDiscountsRequestHandler(IDataContext context)
         {
             _context = context;
             

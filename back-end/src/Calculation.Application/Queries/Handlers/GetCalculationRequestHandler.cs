@@ -9,9 +9,9 @@ namespace Calculation.Application.Queries.Handlers
 {
     public class GetCalculationRequestHandler : IRequestHandler<GetCalculationRequest, Result<CdbCalculation>>
     {
-        private readonly DataContext _context;
+        private readonly IDataContext _context;
 
-        public GetCalculationRequestHandler(DataContext context)
+        public GetCalculationRequestHandler(IDataContext context)
         {
             _context = context;
         }
