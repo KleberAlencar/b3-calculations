@@ -11,13 +11,13 @@ namespace Calculation.Tests.Application.Handlers
     public class GetCalculationRequestHandlerTest
     {
         private DataContextTest _context;
-        private GetCalculationRequestHandler _getCalculationRequestHandler;
+        private GetCalculationRequestHandler _handler;
 
         [TestInitialize]
         public void Initialize()
         {
             _context = new DataContextTest();
-            _getCalculationRequestHandler = new GetCalculationRequestHandler(_context);
+            _handler = new GetCalculationRequestHandler(_context);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace Calculation.Tests.Application.Handlers
             var expectedResult = new CdbCalculation(1000, 10, 8, 2);
 
             //Act
-            var result = await _getCalculationRequestHandler.Handle(request, It.IsAny<CancellationToken>());
+            var result = await _handler.Handle(request, It.IsAny<CancellationToken>());
 
             //Assert
             result.Should().BeEquivalentTo(expectedResult);
