@@ -1,4 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { CalculationComponent } from './components/calculation/calculation.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,9 +13,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CalculationService } from './services/calculation.service';
-
-import { AppComponent } from './app.component';
-import { CalculationComponent } from './components/calculation/calculation.component';
 
 import { registerLocaleData } from '@angular/common';
 import pt from '@angular/common/locales/pt';
