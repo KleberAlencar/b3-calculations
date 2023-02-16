@@ -50,4 +50,6 @@ Os testes deverão ser realizados dentro da pasta front-end/src/Calculation-App.
 
 Atenção: Apenas para agilidade, foram realizados testes somente na pasta "services", outros itens como components, etc. poderão ser testadas no futuro.
 
+Versões utilizadas:
+
 ![Versions](https://user-images.githubusercontent.com/34080267/219413512-d6fab2c1-93ca-4fdc-91d0-b8fa42b9821b.png)
