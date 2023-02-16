@@ -32,6 +32,9 @@ Com intuito de padronizar as chamadas, os métodos que começam com Get (ex.: Ge
 Os testes deverão ser realizados dentro da pasta back-end/src/Calculation.Tests.
 - Executar testes utilizando o comando < dotnet test >
 
+Atenção: Na Api foi utilizado EF Core e foi necessário o Mock do DataContext o que aumentou o código e acabou dificultando o processo.
+A ideia é simplificar utilizando uma outra estratégia com a utilização de Repositórios e Interfaces, facilindo a escrita de testes e diminuindo código.
+
 # front-end
 Com o back-end em execução o front-end poderá ser inicializado da seguinte forma:
 
@@ -45,4 +48,6 @@ Os testes deverão ser realizados dentro da pasta front-end/src/Calculation-App.
 - Executar testes utilizando o comando < npm test >
 - Para validar cobertura utilizar comando < ng test --code-coverage >
 
-Atenção: Apenas para agilidade, foram realizados testes somente na pasta "services", outras pastas podem ser testadas no futuro.
+Atenção: Apenas para agilidade, foram realizados testes somente na pasta "services", outros itens como components, etc. poderão ser testadas no futuro.
+
+![Versions](https://user-images.githubusercontent.com/34080267/219413512-d6fab2c1-93ca-4fdc-91d0-b8fa42b9821b.png)
