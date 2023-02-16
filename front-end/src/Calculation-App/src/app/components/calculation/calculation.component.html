@@ -3,7 +3,7 @@
   <h1>Cálculo do Investimento</h1>
   <br />
 
-  <form>
+  <form [formGroup]="formCalculation" (ngSubmit)="getCdbCalculation()">
     <div class="row">
       <div class="col-sm">
         <input
@@ -11,7 +11,7 @@
           class="form-control"
           placeholder="Investimento"
           required
-          [formControl]="investiment"
+          formControlName="txtInvestiment"
         />
       </div>
       <div class="col-sm">
@@ -20,18 +20,12 @@
           class="form-control"
           placeholder="Meses"
           required
-          [formControl]="months"
+          formControlName="txtMonths"
         />
       </div>
       <div class="col-sm">
-        <button
-          type="button"
-          (click)="getCdbCalculation()"
-          class="btn btn-outline-success"
-        >
-          Calcular
-        </button>
-      </div>
+        <button type="submit" class="btn btn-outline-success" [disabled]="!formCalculation.valid">Calcular</button>
+       </div>
     </div>
   </form>
   <div *ngIf="cdbCalculation">
@@ -100,7 +94,7 @@
         <tr *ngFor="let item of taxDiscounts">
           <td>{{ item.startingMonth }}</td>
           <td>{{ item.endingMonth }}</td>
-          <td>{{ item.percentage | number: '1.2-2' }}</td>
+          <td>{{ item.percentage | number : "1.2-2" }}</td>
         </tr>
       </tbody>
     </table>

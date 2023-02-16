@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { TaxDiscount } from '../../models/TaxDiscount';
@@ -12,13 +12,13 @@ import { CalculationService } from '../../services/calculation.service';
 })
 export class CalculationComponent implements OnInit {
 
-  investiment = new FormControl();
-  months = new FormControl();
+  formCalculation!: FormGroup;
 
   public cdbCalculation: any;
   public taxDiscounts: TaxDiscount[] = [];
 
   constructor(
+    private formBuilder: FormBuilder,
     private calculationService: CalculationService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService
@@ -27,10 +27,15 @@ export class CalculationComponent implements OnInit {
   public ngOnInit(): void {
     this.spinner.show();
     this.searchTaxDiscounts();
+
+    this.formCalculation = this.formBuilder.group({
+      txtInvestiment: [null, [Validators.required, Validators.min(1)]],
+      txtMonths: [null, [Validators.required, Validators.min(2), Validators.max(1200)]]
+    });
   }
 
   public getCdbCalculation(): void {
-    this.calculationService.getCdbCalcuation(this.investiment.value, this.months.value).subscribe(
+    this.calculationService.getCdbCalcuation(this.formCalculation.value.txtInvestiment, this.formCalculation.value.txtMonths).subscribe(
       response => this.cdbCalculation = response,
       error => console.log(error)
     );
