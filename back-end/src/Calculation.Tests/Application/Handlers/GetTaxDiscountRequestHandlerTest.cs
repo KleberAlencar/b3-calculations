@@ -1,9 +1,9 @@
-using System.Collections.Immutable;
 using Moq;
 using FluentAssertions;
 using FizzWare.NBuilder;
-using Calculation.Tests.Mock;
-using Calculation.Tests.Mock.Entities;
+using Calculation.Domain;
+using Calculation.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Calculation.Application.Queries.Requests;
 using Calculation.Application.Queries.Handlers;
 
@@ -12,17 +12,15 @@ namespace Calculation.Tests.Application.Handlers
     [TestClass]
     public class GetTaxDiscountRequestHandlerTest
     {
-        private DataContextTest _context;
-        private GetTaxDiscountRequestHandler _handler;
+        private Mock<IDataContext> _context;
 
         [TestInitialize]
         public void Initialize()
         {
-            _context = new DataContextTest();
-            _handler = new GetTaxDiscountRequestHandler(_context);
+            _context = new Mock<IDataContext>();
         }
         
-                [TestMethod]
+        [TestMethod]
         public async Task Handle_Test()
         {
             //Arrange
@@ -32,17 +30,19 @@ namespace Calculation.Tests.Application.Handlers
                 .Build();                
             var expectedResult = Builder<TaxDiscount>
                 .CreateNew()
-                .With(x => x.Id = 1)
-                .With(x => x.StartingMonth = 1)
-                .With(x => x.EndingMonth = 6)
-                .With(x => x.Percentage = 22.5)
                 .Build();
+
+            var mockSet = new Mock<DbSet<TaxDiscount>>();
+            var mockContext = new Mock<IDataContext>();
+            mockContext.Setup(m => m.TaxDiscount).Returns(mockSet.Object);
  
+            var _handler = new GetTaxDiscountRequestHandler(mockContext.Object);
+
             //Act
             var result = await _handler.Handle(request, It.IsAny<CancellationToken>());
 
             //Assert
-            result.Should().BeEquivalentTo(expectedResult);
+            result.Value.Should().BeEquivalentTo(expectedResult);
         }
     }
 }

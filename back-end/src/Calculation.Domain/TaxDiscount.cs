@@ -2,6 +2,10 @@ namespace Calculation.Domain
 {
     public class TaxDiscount
     {
+        public TaxDiscount()
+        {            
+        }
+
         public TaxDiscount(int startingMonth, int endingMonth, double percentage)
         {
             StartingMonth = startingMonth;

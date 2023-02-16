@@ -1,5 +1,4 @@
 using MediatR;
-using System.Linq;
 using Calculation.Domain;
 using Calculation.Infrastructure;
 using Calculation.Application.Core;
@@ -19,7 +18,7 @@ namespace Calculation.Application.Queries.Handlers
 
         public async Task<Result<TaxDiscount>> Handle(GetTaxDiscountRequest request, CancellationToken cancellationToken)
         {
-            var taxDiscount = await _context.TaxDiscount.FirstOrDefaultAsync(x => x.StartingMonth <= request.Month && x.EndingMonth >= request.Month);
+            var taxDiscount = await _context.TaxDiscount.SingleAsync(x => x.StartingMonth <= request.Month && x.EndingMonth >= request.Month);
             return Result<TaxDiscount>.Success(taxDiscount);
         }
     }

@@ -2,6 +2,10 @@ namespace Calculation.Domain
 {
     public class MonthlyCalculation
     {
+        public MonthlyCalculation()
+        {            
+        }
+
         public MonthlyCalculation(int month, double initialValue, double finalValue)
         {
             Month = month;

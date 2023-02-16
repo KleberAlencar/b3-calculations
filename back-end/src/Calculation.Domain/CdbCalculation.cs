@@ -8,7 +8,11 @@ namespace Calculation.Domain
 
         #endregion
 
-        #region [ Constructor ]
+        #region [ Constructors ]
+
+        public CdbCalculation()
+        {            
+        }
 
         public CdbCalculation(double investiment, double grossIncome, double netIncome, double taxDiscountValue)
         {
