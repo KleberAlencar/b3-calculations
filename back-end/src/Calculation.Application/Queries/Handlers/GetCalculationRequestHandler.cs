@@ -1,4 +1,5 @@
 using MediatR;
+using System.Linq;
 using Calculation.Domain;
 using Calculation.Infrastructure;
 using Calculation.Application.Core;
@@ -30,8 +31,9 @@ namespace Calculation.Application.Queries.Handlers
                 initialValue = finalValue;
             }
 
-            var taxDiscount = await _context.TaxDiscount.FirstOrDefaultAsync(x => x.StartingMonth <= request.MonthsQuantity && 
-                                                                                  x.EndingMonth >= request.MonthsQuantity);
+            var discounts = await _context.TaxDiscount.ToListAsync();
+            var taxDiscount = discounts.Where(x => x.StartingMonth <= request.MonthsQuantity && x.EndingMonth >= request.MonthsQuantity).FirstOrDefault();
+
             if (taxDiscount != null)
             {
                 var taxDiscountValue = (finalValue - request.Investiment) * (taxDiscount.Percentage / 100);

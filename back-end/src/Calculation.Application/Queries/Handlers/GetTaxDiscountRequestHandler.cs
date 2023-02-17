@@ -18,7 +18,9 @@ namespace Calculation.Application.Queries.Handlers
 
         public async Task<Result<TaxDiscount>> Handle(GetTaxDiscountRequest request, CancellationToken cancellationToken)
         {
-            var taxDiscount = await _context.TaxDiscount.SingleAsync(x => x.StartingMonth <= request.Month && x.EndingMonth >= request.Month);
+            var discounts = await _context.TaxDiscount.ToListAsync();
+            var taxDiscount = discounts.Where(x => x.StartingMonth <= request.Month && x.EndingMonth >= request.Month).FirstOrDefault();
+
             return Result<TaxDiscount>.Success(taxDiscount);
         }
     }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Query;
 
 namespace Calculation.Tests.Helpers
 {
-    public class ContextHelper
+    public static class ContextHelper
     {
         public class TestAsyncEnumerator<T> : IAsyncEnumerator<T>
         {

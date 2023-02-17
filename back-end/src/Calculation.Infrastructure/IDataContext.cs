@@ -5,6 +5,6 @@ namespace Calculation.Infrastructure
 {
     public interface IDataContext : IDisposable
     {
-        DbSet<TaxDiscount> TaxDiscount { get; }
+        DbSet<TaxDiscount> TaxDiscount { get; set; }
     }
 }
